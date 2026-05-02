@@ -9,13 +9,9 @@ import org.hibernate.cfg.Configuration;
 public class ClientDemo {
 
     public static void main(String[] args) {
-
-        // Build SessionFactory from hibernate.cfg.xml
         Configuration cfg = new Configuration();
-        cfg.configure(); // loads hibernate.cfg.xml
+        cfg.configure(); 
         SessionFactory sessionFactory = cfg.buildSessionFactory();
-
-        // --- I. INSERT Operation using Persistent Object ---
         Session session1 = sessionFactory.openSession();
         Transaction tx1 = session1.beginTransaction();
 
@@ -32,8 +28,6 @@ public class ClientDemo {
         System.out.println(movie);
 
         session1.close();
-
-        // --- II. UPDATE Name and Status based on ID using HQL with Positional Parameters ---
         Session session2 = sessionFactory.openSession();
         Transaction tx2 = session2.beginTransaction();
 
@@ -47,8 +41,6 @@ public class ClientDemo {
         tx2.commit();
 
         System.out.println("\nRows Updated: " + rowsUpdated);
-
-        // Verify the update
         Movie updatedMovie = session2.get(Movie.class, 101);
         System.out.println("Updated Movie: " + updatedMovie);
 
