@@ -22,8 +22,6 @@ public class Movie {
     @Column(name = "movie_status", length = 50)
     private String status;
 
-    // Getters and Setters
-
     public int getId() {
         return id;
     }
